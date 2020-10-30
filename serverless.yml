@@ -22,6 +22,7 @@ provider:
   #
   environment:
     tableName: ${env:TABLE_NAME}
+    stripeSecretKey: ${env:STRIPE_SECRET_KEY}
 
   iamRoleStatements:
     - Effect: Allow
@@ -84,3 +85,5 @@ functions:
           method: post
           cors: true
           authorizer: aws_iam
+resources:
+  - ${file(resources/api-gateway-errors.yml)}
